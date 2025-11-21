@@ -6,46 +6,75 @@ body {
     color: #333;
 }
 
+/* HEADER */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-    background-color: #fff; 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #fff6d1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  border-bottom: 4px solid #b0652f;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+  margin-right: 200px;
+  
 }
 
 .logo img {
-    height: 50px; 
-    margin-right: 15px;
+  width: 80px;
+  size: 200px;
 }
 
-.logo .title {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #8B0000; /* Warna merah marun/gelap untuk judul */
+.title h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
 }
 
 nav a {
-    text-decoration: none;
-    color: #333;
-    margin-left: 25px;
-    font-weight: 500;
-    transition: color 0.3s;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
 }
 
 nav a:hover {
-    color: #8B0000;
+  color: #a94d1b;
+}
+
+/* DROPDOWN MENU */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ebcc52;
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 999;        
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .hero {
     position: relative;
-    height: 500px; 
+    height: 540px; 
     background: url('foto1.JPG') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -53,7 +82,9 @@ nav a:hover {
     color: white;
     font-size: 2rem;
     font-weight: bold;
+    
 }
+
 
 .hero::before {
     content: "";
@@ -62,7 +93,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.4); /* gelap 40% */
+    /*background: rgba(0,0,0,0.4); /* gelap 40% */
 }
 
 .hero h2 {
@@ -70,6 +101,14 @@ nav a:hover {
     z-index: 2;
     font-size: 2.5em;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    font-family: I;
+    font-size: 80px;  /* Atur besar di sini */
+    line-height: 1.1;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    text-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+    margin-top: 350px;
     
 }
 
@@ -96,10 +135,11 @@ nav a:hover {
 
 section {
     margin-bottom: 60px;
+    text-align: center;
 }
 
 .content {
-    background-color: #EEDDCC;
+    background: #f8f1df;
     width: 90%;
     max-width: 1400px;
     padding: 40px 60px;
@@ -108,10 +148,12 @@ section {
 
 .deskripsi-klub, .daftar-kesenian {
     margin-bottom: 30px;
+    text-align: center;
+    font-size: 17px;
 }
 
 .content h2 {
-    border-bottom: 2px solid #8B0000;
+    
     padding-bottom: 5px;
     margin-bottom: 20px;
     color: #000000;
@@ -120,8 +162,9 @@ section {
 
 .deskripsi-klub p {
     line-height: 1.6;
-    text-align: justify;
+    text-align: center;
     color: black
+
 }
 
 
