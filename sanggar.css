@@ -74,8 +74,8 @@ nav a:hover {
 
 .hero {
     position: relative;
-    height: 540px; 
-    background: url('foto1.JPG') center/cover no-repeat;
+    height: 87vh; 
+    background: url('sang\ back.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;

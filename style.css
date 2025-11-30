@@ -74,13 +74,14 @@ nav a:hover {
 /* HERO SECTION */
 .hero {
   position: relative;
-  height: 500px;
+  height: 520px;
   background: url('WEBSITE\ UKM.jpg') center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   text-align: center;
+  border-bottom: #333 30px solid;
 }
 
 /* Lapisan gelap agar teks lebih jelas 
@@ -265,7 +266,8 @@ nav a:hover {
 /*  ABOUT US PAGE STYLE SECTION  */
 .about-section {
   display: flex;
-  height: 500px;
+  height: 520px;
+  border-bottom: #333 30px solid;
 }
 
 .about-left {
