@@ -23,8 +23,8 @@ header {
 
 /* HERO */
 .hero {
-    height: 630px;
-    background: url("angklung\ back.jpg") center/cover no-repeat;
+    height: 600px;
+    background: url("indevs\ bak.jpg") center/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,6 +42,7 @@ header {
     color: white;
     font-weight: 900;
     text-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+    margin-top: 70px;
 
 }
 

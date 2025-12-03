@@ -2,16 +2,22 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #fdf7e3;
+  margin-top: 70px; /* untuk menghindari konten tertutup header */
 }
 
 /* HEADER */
 header {
+  position: fixed;
   background-color: #fff6d1;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 50px;
   border-bottom: 4px solid #b0652f;
+  top: 0;
+  left: 0;
+  width: 93%;
+  z-index: 999;
 }
 
 .logo {
@@ -74,7 +80,7 @@ nav a:hover {
 /* HERO SECTION */
 .hero {
   position: relative;
-  height: 520px;
+  height: 540px;
   background: url('WEBSITE\ UKM.jpg') center/cover no-repeat;
   display: flex;
   justify-content: center;

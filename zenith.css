@@ -1,0 +1,189 @@
+body {
+  margin: 0;
+  font-family: i;
+  padding: 0;
+  margin: 0;
+
+}
+
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* kepekatan boleh ubah */
+  z-index: 1;
+}
+
+/* Background Image */
+.bg-img {
+  position:fixed ;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+
+.hero {
+  position: relative;
+  height: 630px;
+  background: url('zenith\ bg.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  border-bottom: #333 30px solid;
+  margin-top: 40px;
+}
+.hero-right h1 {
+    font-family: I;
+    font-size: 120px;  /* Atur besar di sini */
+    line-height: 1.1;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    text-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+    width: 400px;
+    margin-top: 400px;
+}
+
+.footer {
+  background: linear-gradient(to top, #000000, #a0744f);
+  color: #fff;
+  padding: 40px 0 20px;
+  font-family: Arial, sans-serif;
+  margin-top: 40px;
+  position: relative;
+    bottom: 0;
+
+}
+
+.footer-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  width: 23%;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 6px;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+.powered-by {
+  text-align: center;
+  margin-top: 30px;
+  color: #ccc;
+}
+
+.powered-by p {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.power-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px; /* jarak antar logo */
+}
+
+.power-logos img {
+  width: 80px;   /* ukuran logo */
+  height: auto;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.power-logos img:hover {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 10px;
+  font-size: 14px;
+}
+.social-icons {
+    margin-bottom: 20px;
+    margin-left: 525px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icon-box {
+    width: 38px;
+    height: 38px;
+    border: 2px solid #ffffffcc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.icon-box i {
+    color: #ffffffcc;
+    font-size: 18px;
+}
+
+.icon-box:hover {
+    border-color: #fff;
+    transform: translateY(-3px);
+}
+
+.icon-box:hover i {
+    color: #fff;
+}

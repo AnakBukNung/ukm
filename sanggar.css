@@ -74,14 +74,16 @@ nav a:hover {
 
 .hero {
     position: relative;
-    height: 87vh; 
-    background: url('sang\ back.png') center/cover no-repeat;
+    height: 650px; 
+    background: url('sanggar\ bak.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 2rem;
     font-weight: bold;
+    border-bottom: #b0652f 4px solid;
+    size: 50px;
     
 }
 
