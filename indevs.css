@@ -32,11 +32,18 @@ header {
     color: white;
     text-shadow: 0 0 15px black;
     margin-top: 0px;
-    border-bottom: #b0652f 4px solid;
+    border-bottom: #b0652f 10px solid;
+}
+.logo-kiri {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  width: 100px;     /* atur sendiri */
+  z-index: 99;   /* supaya di atas foto */
 }
 .hero-right h1 {
     font-family: I;
-    font-size: 80px;  /* Atur besar di sini */
+    font-size: 120px;  /* Atur besar di sini */
     line-height: 1.1;
     text-align: center;
     color: white;
@@ -71,6 +78,7 @@ section {
 .about, .history {
     background: #f8f1df;
     margin-bottom: 20px;
+    border-bottom: #b0652f 4px solid;
     
 }
 
