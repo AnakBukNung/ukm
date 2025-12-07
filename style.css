@@ -1,0 +1,305 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fdf7e3;
+  margin-top: 70px; /* untuk menghindari konten tertutup header */
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  background-color: #fff6d1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  border-bottom: 4px solid #b0652f;
+  top: 0;
+  left: 0;
+  width: 93%;
+  z-index: 999;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+  margin-right: 200px;
+  
+}
+
+.logo img {
+  width: 80px;
+  size: 200px;
+}
+
+.title h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #a94d1b;
+}
+
+/* DROPDOWN MENU */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ebcc52;
+  list-style: none;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 999;        
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* HERO SECTION */
+/* HERO SECTION */
+.hero {
+  position: relative;
+  height: 540px;
+  background: url('WEBSITE\ UKM.jpg') center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  border-bottom: #333 30px solid;
+}
+
+/* Lapisan gelap agar teks lebih jelas 
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%;
+ 
+}*/
+
+/* Konten utama di atas lapisan gelap */
+.hero-content {
+  position: relative;
+  z-index: ;
+  text-align: center;
+}
+
+.hero-logo {
+  width: 300px;
+  margin-bottom: 50px;
+}
+
+/* Judul teks */
+.hero-right h1 {
+    font-size: 70px;
+    line-height: 1.1;
+    text-align: right;
+    color: white;
+    font-weight: 900;
+    text-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+    width: 150%;
+    display: flex;
+    align-items: right;
+    justify-content: right;  /* ➜ geser tulisan ke kanan */
+    
+    
+    
+}
+
+.hero h2 {
+  font-size: 35px;
+  margin: 5px 0 0 0;
+  font-weight: bold;
+}
+
+/* FOOTER */
+
+
+
+
+.footer {
+  background: linear-gradient(to top, #000000, #a0744f);
+  color: #fff;
+  padding: 40px 0 20px;
+  font-family: Arial, sans-serif;
+  margin-top: 40px;
+
+}
+
+.footer-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  width: 23%;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 6px;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+.powered-by {
+  text-align: center;
+  margin-top: 30px;
+  color: #ccc;
+}
+
+.powered-by p {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.power-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px; /* jarak antar logo */
+}
+
+.power-logos img {
+  width: 80px;   /* ukuran logo */
+  height: auto;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.power-logos img:hover {
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 10px;
+  font-size: 14px;
+}
+.social-icons {
+    margin-bottom: 20px;
+    margin-left: 525px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icon-box {
+    width: 38px;
+    height: 38px;
+    border: 2px solid #ffffffcc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.icon-box i {
+    color: #ffffffcc;
+    font-size: 18px;
+}
+
+.icon-box:hover {
+    border-color: #fff;
+    transform: translateY(-3px);
+}
+
+.icon-box:hover i {
+    color: #fff;
+}
+
+
+
+
+/*  ABOUT US PAGE STYLE SECTION  */
+.about-section {
+  display: flex;
+  height: 520px;
+  border-bottom: #333 30px solid;
+}
+
+.about-left {
+  flex: 1;
+  background: url('background1.jpg') center/cover no-repeat;
+}
+
+.about-right {
+  flex: 1;
+  background-color: #cbb490;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-right h1 {
+  color: black;
+  font-size: 32px;
+  margin-bottom: 50px;
+}
+
+.about-right p {
+  color: #333;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 100;
+  margin-top: 50;
+}
