@@ -32,7 +32,7 @@ header {
 
 .title h3 {
   font-size: 16px;
-  color: #333;
+  color: #000000;
   margin: 0;
 }
 
@@ -45,12 +45,12 @@ nav ul {
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
   font-weight: bold;
 }
 
 nav a:hover {
-  color: #a94d1b;
+  color: #000000;
 }
 
 /* DROPDOWN MENU */
@@ -61,7 +61,7 @@ nav a:hover {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #ebcc52;
+  background-color: #89561d;
   list-style: none;
   padding: 10px;
   border-radius: 10px;
@@ -82,7 +82,7 @@ nav a:hover {
     color: white;
     font-size: 2rem;
     font-weight: bold;
-    border-bottom: #b0652f 4px solid;
+    border-bottom: #b0652f 10px solid;
     size: 50px;
     
 }
@@ -104,13 +104,13 @@ nav a:hover {
     font-size: 2.5em;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
     font-family: I;
-    font-size: 80px;  /* Atur besar di sini */
+    font-size: 100px;  /* Atur besar di sini */
     line-height: 1.1;
     text-align: center;
     color: white;
     font-weight: 900;
     text-shadow: 4px 4px 10px rgba(0,0,0,0.8);
-    margin-top: 350px;
+    margin-top: 450px;
     
 }
 

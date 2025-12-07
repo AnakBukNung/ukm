@@ -70,6 +70,7 @@ section {
 .about, .history {
     background: #f8f1df;
     margin-bottom: 20px;
+    border-bottom: #b0652f 4px solid;
     
 }
 
