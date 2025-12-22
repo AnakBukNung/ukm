@@ -137,6 +137,35 @@ nav a:hover {
   font-weight: bold;
 }
 
+ .gallery1 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 10px;
+            margin-top: 30px;
+        }
+
+        
+        .gallery1 img,
+        .gallery1 video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        
+        .gallery1 img:hover,
+        .gallery1 video:hover {
+            transform: scale(1.05);
+        }
+
+.card {
+  background: linear-gradient(to bottom,rgb(202, 153, 56),white);
+  padding: 10px;
+  border-radius: 10px;
+}
+
 /* FOOTER */
 
 
