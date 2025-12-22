@@ -1,0 +1,143 @@
+/* Animations CSS - Page Load Transitions */
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Base Animation Classes */
+.animate-fadeInUp {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fadeIn {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slideInLeft {
+    opacity: 0;
+    animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slideInRight {
+    opacity: 0;
+    animation: slideInRight 0.8s ease-out forwards;
+}
+
+/* Delay Classes for Staggered Animations */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+.delay-8 { animation-delay: 0.8s; }
+
+/* Hero Animation */
+.hero.animate-ready {
+    animation: fadeIn 1s ease-out;
+}
+
+.hero h1.animate-ready,
+.hero h2.animate-ready {
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Section Animations */
+section.animate-fadeInUp h3,
+section.animate-fadeInUp h2,
+section.animate-fadeInUp h4 {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+section.animate-fadeInUp p {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+/* Gallery Items Animation */
+.gallery-box img,
+.card,
+.power-logos img {
+    opacity: 0;
+}
+
+.gallery-box.animate-ready img,
+.card-wrapper.animate-ready .card,
+.power-logos.animate-ready img {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Stagger gallery items */
+.gallery-box.animate-ready img:nth-child(1) { animation-delay: 0.1s; }
+.gallery-box.animate-ready img:nth-child(2) { animation-delay: 0.2s; }
+.gallery-box.animate-ready img:nth-child(3) { animation-delay: 0.3s; }
+.gallery-box.animate-ready img:nth-child(4) { animation-delay: 0.4s; }
+.gallery-box.animate-ready img:nth-child(5) { animation-delay: 0.5s; }
+.gallery-box.animate-ready img:nth-child(6) { animation-delay: 0.6s; }
+
+.card-wrapper.animate-ready .card:nth-child(1) { animation-delay: 0.1s; }
+.card-wrapper.animate-ready .card:nth-child(2) { animation-delay: 0.2s; }
+.card-wrapper.animate-ready .card:nth-child(3) { animation-delay: 0.3s; }
+.card-wrapper.animate-ready .card:nth-child(4) { animation-delay: 0.4s; }
+
+.power-logos.animate-ready img:nth-child(1) { animation-delay: 0.1s; }
+.power-logos.animate-ready img:nth-child(2) { animation-delay: 0.2s; }
+
+/* Footer Animation */
+footer.animate-ready {
+    animation: fadeIn 0.8s ease-out;
+}
+
+.footer-section {
+    opacity: 0;
+}
+
+footer.animate-ready .footer-section {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+footer.animate-ready .footer-section:nth-child(1) { animation-delay: 0.1s; }
+footer.animate-ready .footer-section:nth-child(2) { animation-delay: 0.2s; }
+footer.animate-ready .footer-section:nth-child(3) { animation-delay: 0.3s; }
+footer.animate-ready .footer-section:nth-child(4) { animation-delay: 0.4s; }
