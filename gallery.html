@@ -1,37 +1,412 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UKM</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>UKM PPI AIU - Digital Album</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="responsive.css">
+  <style>
+    /* --- VARIABEL TEMA (VINTAGE BROWN) --- */
+    :root {
+      --bg-color: #2d1b0e;
+      --nav-bg: #1a1008;
+      --cover-color: #4e342e; /* Cokelat Kulit Gelap */
+      --paper-color: #f3e5d8;
+      --text-color: #3e2723;
+      --accent-color: #8d6e63;
+      --gold-accent: #d4af37;
+      --light-text: #e0e0e0;
+    }
+
+    /* --- RESET & GLOBAL --- */
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      background-image: radial-gradient(circle, #3e2723 0%, #1a1008 100%);
+      font-family: 'Segoe UI', serif;
+      color: var(--light-text);
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    ul { list-style: none; padding: 0; margin: 0; }
+
+    /* --- 1. HEADER / NAVBAR STYLES --- */
+    header {
+      background-color: var(--nav-bg);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--gold-accent);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .logo { display: flex; align-items: center; gap: 15px; }
+    .title h3 { margin: 0; font-size: 0.8rem; line-height: 1.2; letter-spacing: 1px; color: var(--gold-accent); }
+
+    nav ul { display: flex; gap: 25px; }
+    nav ul li { position: relative; }
+    nav ul li a { font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; color: var(--paper-color); }
+    nav ul li a:hover { color: var(--gold-accent); }
+
+    /* Dropdown */
+    .dropdown-content {
+      display: none; position: absolute; background-color: var(--cover-color);
+      min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1; top: 100%; left: 0; border-radius: 4px;
+    }
+    .dropdown:hover .dropdown-content { display: block; }
+    .dropdown-content li a { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .dropdown-content li a:hover { background-color: var(--accent-color); }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; gap: 15px; padding: 15px; }
+      nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+      nav ul li a { font-size: 0.8rem; }
+      .logo img { width: 50px; }
+      .title h3 { font-size: 0.7rem; }
+      .dropdown:hover .dropdown-content { position: relative; width: 100%; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 10px; }
+      nav ul { gap: 10px; }
+      nav ul li a { font-size: 0.7rem; }
+      .logo img { width: 40px; }
+      .title h3 { font-size: 0.6rem; }
+      .btn-ctrl { padding: 8px 15px; font-size: 12px; }
+      .track img { width: 150px; height: 90px; }
+    }
+
+
+    /* --- 2. BOOK SECTION (ALBUM) --- */
+    .album-section {
+      min-height: 90vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; padding: 40px 0;
+    }
+
+    .book-controls { margin-bottom: 20px; z-index: 10; display: flex; gap: 15px; }
+    
+    .btn-ctrl {
+      padding: 10px 20px; font-size: 14px; cursor: pointer;
+      background: var(--accent-color); color: #fff;
+      border: 1px solid var(--cover-color); border-radius: 25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3); font-family: serif;
+    }
+    .btn-ctrl:hover { background: var(--cover-color); transform: translateY(-2px); }
+    .btn-danger { background: #8b3a3a; }
+
+    /* Scene 3D */
+    .scene { width: 350px; height: 500px; perspective: 2500px; position: relative; transition: transform 0.5s; }
+    .book { width: 100%; height: 100%; position: absolute; left: 50%; top: 0; transform-style: preserve-3d; transform: rotateX(10deg); }
+
+    /* Page Styles */
+    .page {
+      width: 100%; height: 100%; position: absolute; top: 0; left: 0;
+      transform-origin: left center; transform-style: preserve-3d;
+      cursor: grab; transition: transform 1.2s cubic-bezier(0.6, 0.05, 0.28, 0.9);
+      border-radius: 0 5px 5px 0;
+    }
+    .page:active { cursor: grabbing; }
+
+    .front, .back {
+      position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+      display: flex; flex-direction: column; align-items: center; padding: 20px;
+      box-sizing: border-box; background-color: var(--paper-color);
+      border: 1px solid #d7ccc8; color: var(--text-color);
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7z' fill='%235d4037' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+    .front { z-index: 2; }
+    .back { transform: rotateY(180deg); z-index: 1; border-left: 1px solid #bcaaa4; background-color: #efebe9; }
+
+    /* --- PERBAIKAN COVER STYLING --- */
+    
+    /* 1. Cover Depan (Sisi Luar) */
+    .cover .front {
+      background-color: var(--cover-color);
+      background-image: none; /* Hilangkan tekstur kertas */
+      color: #d7ccc8;
+      border: 2px solid #3e2723;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+      justify-content: center;
+    }
+
+    /* 2. Cover Belakang (Sisi Luar) - FIXED */
+    .back-cover .back {
+      background-color: var(--cover-color) !important; /* Paksa warna cokelat */
+      background-image: none !important; /* Hilangkan tekstur kertas */
+      color: #a1887f;
+      border: 2px solid #3e2723; /* Border tebal seperti cover depan */
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Shadow dalam */
+      justify-content: center;
+    }
+
+    /* Isi Cover */
+    .cover-border { border: 3px double #a1887f; padding: 20px; width: 80%; text-align: center; }
+
+    /* Shadows & Effects */
+    .front::after { content: ''; position: absolute; top: 0; bottom: 0; width: 30px; left: 0; background: linear-gradient(to right, rgba(62, 39, 35, 0.2), transparent); pointer-events: none; }
+    .back::after { content: ''; position: absolute; top: 0; bottom: 0; width: 30px; right: 0; background: linear-gradient(to left, rgba(62, 39, 35, 0.2), transparent); pointer-events: none; }
+    
+    .page .front::before {
+      content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 20%, transparent 100%);
+      opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 10;
+    }
+    .page.moving .front::before { opacity: 1; }
+    
+    .flipped { transform: rotateY(-180deg) !important; }
+    .flipped .front, .flipped .back { box-shadow: -5px 5px 20px rgba(0,0,0,0.2) !important; }
+
+    /* Photo Frame */
+    .photo-frame { background: #fff; padding: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.15); margin-top: 40px; width: 85%; transform: rotate(-1deg); }
+    .photo-frame img { width: 100%; height: 220px; object-fit: cover; filter: sepia(20%); display: block; }
+    
+    h3, h2 { font-family: 'Georgia', serif; border-bottom: 2px solid var(--accent-color); padding-bottom: 5px; margin-top: 20px;}
+
+    @media (max-width: 768px) {
+        .scene { transform: scale(0.48); width: 100%; }
+        .book { left: 50%; }
+    }
+
+
+    /* --- 3. MARQUEE GALLERY --- */
+    .marquee-container {
+      padding: 50px 0; background: #1e1109; overflow: hidden;
+      border-top: 5px solid var(--cover-color); border-bottom: 5px solid var(--cover-color);
+    }
+    .marquee-row { display: flex; width: 100%; overflow: hidden; margin-bottom: 15px; position: relative; }
+    .track { display: flex; gap: 15px; width: max-content; }
+    .track img { width: 200px; height: 120px; object-fit: cover; border-radius: 5px; border: 2px solid var(--accent-color); filter: sepia(30%); transition: 0.3s; }
+    .track img:hover { filter: sepia(0%); transform: scale(1.05); }
+
+    .move-left { animation: scrollLeft 20s linear infinite; }
+    .move-right { animation: scrollRight 20s linear infinite; }
+
+    @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+
+    /* --- 4. FOOTER --- */
+    .footer { background-color: var(--nav-bg); color: var(--paper-color); padding: 50px 20px 20px; border-top: 2px solid var(--gold-accent); }
+    .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+    .footer-section h2, .footer-section h3 { color: var(--gold-accent); border-bottom: none; margin-top: 0; margin-bottom: 15px; }
+    .footer-section ul li { margin-bottom: 8px; font-size: 0.9rem; color: #ccc; }
+    .footer-section ul li a:hover { color: var(--gold-accent); padding-left: 5px; }
+    .powered-by { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .social-icons { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
+    .icon-box { width: 40px; height: 40px; background: rgba(255,255,255,0.1); display: flex; justify-content: center; align-items: center; border-radius: 50%; color: var(--gold-accent); transition: 0.3s; }
+    .icon-box:hover { background: var(--accent-color); color: white; }
+    .footer-bottom { text-align: center; margin-top: 20px; font-size: 0.8rem; color: #777; }
+
+  </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="Logo UKM">
-      <div class="title">
-        <h3>UNIT</h3>
-        <h3>KEGIATAN</h3>
-        <h3>MAHASISWA</h3>
+
+  
+
+  <section class="album-section">
+    <div class="book-controls">
+      <button class="btn-ctrl" onclick="addPage()">+ Halaman</button>
+      <button class="btn-ctrl btn-danger" onclick="removePage()">- Hapus</button>
+    </div>
+
+    <div class="scene">
+      <div class="book" id="book">
+        
+        <div class="page cover">
+          <div class="front">
+            <div class="cover-border">
+              <h1 style="font-size: 2.5rem; margin: 0; letter-spacing: 3px; color: #efebe9;">ALBUM</h1>
+              <div style="height: 2px; background: #a1887f; width: 50px; margin: 15px auto;"></div>
+              <p style="color: #d7ccc8; margin-top: 10px;">Kegiatan Mahasiswa</p>
+            </div>
+          </div>
+          <div class="back">
+            <h2>Sambutan</h2>
+            <p>"Merekam jejak langkah dalam kenangan."</p>
+          </div>
+        </div>
+
+        <div class="page">
+          <div class="front">
+            <div class="photo-frame">
+              <img src="https://picsum.photos/300/400?random=1">
+            </div>
+            <h3>Kegiatan Awal</h3>
+            <p>Dokumentasi acara pembukaan.</p>
+          </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+          <div class="back">
+            <div class="photo-frame" style="transform: rotate(2deg);">
+              <img src="https://picsum.photos/300/400?random=2">
+            </div>
+            <h3>Keseruan</h3>
+            <p>Momen kebersamaan.</p>
+          </div>
+        </div>
+
+        <div class="page back-cover">
+          <div class="front">
+            <h2 style="margin-top: 100px;">Selesai</h2>
+            <p>Terima kasih telah melihat.</p>
+          </div>
+          <div class="back">
+             <div class="cover-border" style="border-style: dotted; border-width: 1px;">
+                <p style="color: #d7ccc8; margin-top: 0;">UKM PPI AIU</p>
+                <small style="color: #8d6e63;">Since 2025</small>
+             </div>
+          </div>
+        </div>
+
       </div>
     </div>
-    <nav>
-      <ul>
-        <li><a href="ukm.html">HOME</a></li>
-        <li><a href="about.html">ABOUT US</a></li>
+    
+    <p style="color: #8d6e63; margin-top: 20px; font-size: 0.9rem;">Klik halaman untuk membalik</p>
+  </section>
+
+  <section class="marquee-container">
+    <div class="marquee-row">
+      <div class="track move-right">
+        <img src="https://picsum.photos/200/120?random=10">
+        <img src="https://picsum.photos/200/120?random=11">
+        <img src="https://picsum.photos/200/120?random=12">
+        <img src="https://picsum.photos/200/120?random=13">
+        <img src="https://picsum.photos/200/120?random=14">
+        <img src="https://picsum.photos/200/120?random=15">
+        <img src="https://picsum.photos/200/120?random=10">
+        <img src="https://picsum.photos/200/120?random=11">
+        <img src="https://picsum.photos/200/120?random=12">
+        <img src="https://picsum.photos/200/120?random=13">
+        <img src="https://picsum.photos/200/120?random=14">
+        <img src="https://picsum.photos/200/120?random=15">
+      </div>
+    </div>
+    <div class="marquee-row">
+      <div class="track move-left">
+        <img src="https://picsum.photos/200/120?random=20">
+        <img src="https://picsum.photos/200/120?random=21">
+        <img src="https://picsum.photos/200/120?random=22">
+        <img src="https://picsum.photos/200/120?random=23">
+        <img src="https://picsum.photos/200/120?random=24">
+        <img src="https://picsum.photos/200/120?random=25">
+        <img src="https://picsum.photos/200/120?random=20">
+        <img src="https://picsum.photos/200/120?random=21">
+        <img src="https://picsum.photos/200/120?random=22">
+        <img src="https://picsum.photos/200/120?random=23">
+        <img src="https://picsum.photos/200/120?random=24">
+        <img src="https://picsum.photos/200/120?random=25">
+      </div>
+    </div>
+    <div class="marquee-row">
+      <div class="track move-right">
+        <img src="https://picsum.photos/200/120?random=30">
+        <img src="https://picsum.photos/200/120?random=31">
+        <img src="https://picsum.photos/200/120?random=32">
+        <img src="https://picsum.photos/200/120?random=33">
+        <img src="https://picsum.photos/200/120?random=34">
+        <img src="https://picsum.photos/200/120?random=35">
+        <img src="https://picsum.photos/200/120?random=30">
+        <img src="https://picsum.photos/200/120?random=31">
+        <img src="https://picsum.photos/200/120?random=32">
+        <img src="https://picsum.photos/200/120?random=33">
+        <img src="https://picsum.photos/200/120?random=34">
+        <img src="https://picsum.photos/200/120?random=35">
+      </div>
+    </div>
+  </section>
+
+  
+
+  <script>
+    const book = document.getElementById('book');
+    let pages = document.querySelectorAll('.page');
+
+    function initBook() {
+      pages = document.querySelectorAll('.page');
+      const totalPages = pages.length;
+
+      pages.forEach((page, index) => {
+        page.style.zIndex = totalPages - index;
+        page.onclick = null;
         
-        <li class="dropdown">
-          <a href="#">CLUB ▼</a>
-          <ul class="dropdown-content">
-            <li><a href="sanggar.html">SANGGAR</a></li>
-            <li><a href="zenith.html">ZENITH</a></li>
-            <li><a href="indevs.html">INDEVS</a></li>
-            <li><a href="angklung.html">INDEVS</a></li>
-          </ul>
-        </li>
-        <li><a href="gallery.html">GALLERY</a></li>
-      </ul>
-    </nav>
-  </header>
+        page.onclick = function() {
+          this.classList.add('moving');
+          setTimeout(() => { this.classList.remove('moving'); }, 300);
+
+          if (!this.classList.contains('flipped')) {
+            this.classList.add('flipped');
+            this.style.zIndex = index + 1; 
+          } else {
+            this.classList.remove('flipped');
+            setTimeout(() => {
+                 this.style.zIndex = totalPages - index;
+            }, 600);
+          }
+        };
+      });
+    }
+
+    function addPage() {
+      const rnd1 = Math.floor(Math.random() * 100);
+      const rnd2 = Math.floor(Math.random() * 100);
+      
+      const newPage = document.createElement('div');
+      newPage.className = 'page';
+      
+      newPage.innerHTML = `
+        <div class="front">
+          <div class="photo-frame">
+            <img src="https://picsum.photos/300/400?random=${rnd1}">
+          </div>
+          <h3>Halaman Baru</h3>
+          <p>Ditambahkan tanggal ${new Date().toLocaleDateString()}</p>
+        </div>
+        <div class="back">
+           <div class="photo-frame" style="transform: rotate(-2deg);">
+            <img src="https://picsum.photos/300/400?random=${rnd2}">
+          </div>
+          <h3>Sisi Lain</h3>
+          <p>Cerita berlanjut...</p>
+        </div>
+      `;
+      
+      const backCover = document.querySelector('.back-cover');
+      book.insertBefore(newPage, backCover);
+      
+      initBook();
+    }
+
+    function removePage() {
+      pages = document.querySelectorAll('.page');
+      if (pages.length > 2) {
+        const targetPage = pages[pages.length - 2];
+        if(targetPage.classList.contains('flipped')){
+          alert("Tutup dulu halaman yang mau dihapus!");
+          return;
+        }
+        book.removeChild(targetPage);
+        initBook();
+      } else {
+        alert("Album kosong. Cover tidak bisa dihapus.");
+      }
+    }
+
+    initBook();
+  </script>
+  <script src="animations.js"></script>
+</body>
+</html>
