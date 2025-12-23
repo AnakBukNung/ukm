@@ -83,7 +83,7 @@ nav a:hover {
   height: 540px;
   background: url('WEBSITE\ UKM.jpg') center/cover no-repeat;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   color: white;
   text-align: center;
@@ -104,7 +104,7 @@ nav a:hover {
 /* Konten utama di atas lapisan gelap */
 .hero-content {
   position: relative;
-  
+  justify-content: right;
   text-align: center;
 }
 
@@ -115,16 +115,16 @@ nav a:hover {
 
 /* Judul teks */
 .hero-right h1 {
-    font-size: 70px;
-    line-height: 1.1;
+  font-size: 80px;
+  line-height: 1.2;
   text-align: right;
-    color: white;
-    font-weight: 900;
-    text-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+  color: white;
+  font-weight: 900;
+  text-shadow: 10px 10px 10px rgba(0,0,0,0.4);
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: flex-end;  /* geser tulisan ke kanan */
+  align-items: end;
+ margin-right: 60px;
     
     
     
@@ -232,6 +232,7 @@ nav a:hover {
   font-size: 14px;
   letter-spacing: 2px;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .power-logos {
@@ -260,39 +261,6 @@ nav a:hover {
   border-top: 1px solid rgba(255,255,255,0.3);
   padding-top: 10px;
   font-size: 14px;
-}
-.social-icons {
-    margin-bottom: 20px;
-    margin-left: 525px;
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.icon-box {
-    width: 38px;
-    height: 38px;
-    border: 2px solid #ffffffcc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.icon-box i {
-    color: #ffffffcc;
-    font-size: 18px;
-}
-
-.icon-box:hover {
-    border-color: #fff;
-    transform: translateY(-3px);
-}
-
-.icon-box:hover i {
-    color: #fff;
 }
 
 
