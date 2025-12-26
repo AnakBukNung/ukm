@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
+<body class="with-navbar">
 
   <header>
     <div class="logo">
@@ -19,18 +19,18 @@
         <h3>MAHASISWA</h3>
       </div>
     </div>
-    <!--<button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
-    </button>-->
+    </button>
     <nav>
       <ul>
         <li><a href="index.html">HOME</a></li>
         <li><a href="about.html">ABOUT US</a></li>
         
         <li class="dropdown">
-          <a href="#">CLUB ▼</a>
+          <a href="javascript:void(0)" class="dropdown-toggle">CLUB ▼</a>
           <ul class="dropdown-content">
             <li><a href="sanggar.html">SANGGAR</a></li>
             <li><a href="zenith.html">ZENITH</a></li>
@@ -128,6 +128,49 @@ Alor Setar, Kedah, Malaysia</p>
     <p>Developed with by UKM PPI AIU INDEVS Team</p>
   </div>
 </footer>
+
+<script>
+// Toggle mobile menu
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('nav');
+const dropdownToggle = document.querySelector('.dropdown-toggle');
+const dropdown = document.querySelector('.dropdown');
+
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  nav.classList.toggle('active');
+  const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', !isExpanded);
+});
+
+// Toggle dropdown - prevent default on all clicks and toggle on mobile
+dropdownToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  if (window.innerWidth <= 768) {
+    dropdown.classList.toggle('active');
+  }
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target) && !navToggle.contains(e.target) && nav.classList.contains('active')) {
+    navToggle.classList.remove('active');
+    nav.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Close menu when window resizes to desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    nav.classList.remove('active');
+    navToggle.classList.remove('active');
+    dropdown.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
 
 </body>
 </html>
