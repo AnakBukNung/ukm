@@ -37,7 +37,7 @@ header {
 /* HERO */
 .hero {
     position: relative;
-    height: 530px;
+    height: 600px;
     background: url("angklung\ back.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -58,8 +58,8 @@ header {
 }
 
 .hero-right h1 {
-    font-family: Arial;
-    font-size: 120px;
+    font-family:I;
+    font-size: 100px;
     line-height: 1.1;
     text-align: center;
     color: white;

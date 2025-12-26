@@ -37,7 +37,7 @@ header {
 /* HERO */
 .hero {
     position: relative;
-    height: 530px;
+    height: 580px;
     background: url("idv2.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -74,7 +74,7 @@ header {
     color: white;
     font-weight: 900;
     text-shadow: 4px 4px 10px rgba(0,0,0,0.8);
-    margin-top: 300px;
+    margin-top: 350px;
 }
 
 
@@ -121,7 +121,7 @@ section {
 
 .card {
   background: linear-gradient(to bottom,rgb(202, 153, 56),white);
-  padding: 10px;
+  padding:10px;
   border-radius: 10px;
 }
 .card1 {

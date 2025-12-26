@@ -44,7 +44,7 @@ header {
 
 .hero {
     position: relative;
-    height: 530px; 
+    height: 590px; 
     background: url('sanggar\ bak.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -66,13 +66,13 @@ header {
 
 .hero-right h1 {
     font-family: I;
-    font-size: 120px;
+    font-size: 100px;
     line-height: 1.1;
     text-align: center;
     color: white;
     font-weight: 900;
     text-shadow: 4px 4px 10px rgba(0,0,0,0.8);
-     margin-top: 350px;
+     margin-top: 380px;
 }
 
 

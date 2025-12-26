@@ -37,7 +37,7 @@ body {
 
 .hero {
   position: relative;
-  height: 530px;
+  height: 580px;
   background: url('kom\ bak.jpg') center/cover no-repeat;
   display: flex;
   justify-content: center;

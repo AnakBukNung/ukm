@@ -155,7 +155,7 @@ nav a:hover {
 .hero {
   position: relative;
   min-height: 500px;
-  height: 70vh;
+  height: 90vh;
   background: url('WEBSITE\ UKM.jpg') center/cover no-repeat;
   display: flex;
   justify-content: flex-end;
@@ -335,7 +335,7 @@ nav a:hover {
 /* ABOUT US PAGE STYLE SECTION */
 .about-section {
   display: flex;
-  min-height: 500px;
+  min-height: 580px;
   border-bottom: #333 20px solid;
   flex-wrap: wrap;
 }
