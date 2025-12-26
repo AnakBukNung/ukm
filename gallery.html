@@ -35,75 +35,91 @@
     a { text-decoration: none; color: inherit; transition: 0.3s; }
     ul { list-style: none; padding: 0; margin: 0; }
 
-    /* --- 1. HEADER / NAVBAR STYLES --- */
-    header {
-      background-color: var(--nav-bg);
-      padding: 15px 30px;
+    /* --- BACK TO HOME BUTTON --- */
+    .back-home-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, var(--cover-color), var(--accent-color));
+      color: var(--paper-color);
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid var(--gold-accent);
-      position: sticky;
-      top: 0;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: all 0.3s ease;
+      border: 2px solid var(--gold-accent);
     }
 
-    .logo { display: flex; align-items: center; gap: 15px; }
-    .title h3 { margin: 0; font-size: 0.8rem; line-height: 1.2; letter-spacing: 1px; color: var(--gold-accent); }
-
-    nav ul { display: flex; gap: 25px; }
-    nav ul li { position: relative; }
-    nav ul li a { font-size: 0.9rem; font-weight: 600; letter-spacing: 1px; color: var(--paper-color); }
-    nav ul li a:hover { color: var(--gold-accent); }
-
-    /* Dropdown */
-    .dropdown-content {
-      display: none; position: absolute; background-color: var(--cover-color);
-      min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1; top: 100%; left: 0; border-radius: 4px;
+    .back-home-btn:hover {
+      background: linear-gradient(135deg, var(--accent-color), var(--cover-color));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
-    .dropdown:hover .dropdown-content { display: block; }
-    .dropdown-content li a { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .dropdown-content li a:hover { background-color: var(--accent-color); }
+
+    .back-home-btn i {
+      font-size: 16px;
+    }
 
     @media (max-width: 768px) {
-      header { flex-direction: column; gap: 15px; padding: 15px; }
-      nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
-      nav ul li a { font-size: 0.8rem; }
-      .logo img { width: 50px; }
-      .title h3 { font-size: 0.7rem; }
-      .dropdown:hover .dropdown-content { position: relative; width: 100%; text-align: center; }
+      .back-home-btn {
+        padding: 10px 20px;
+        font-size: 12px;
+        top: 15px;
+        left: 15px;
+      }
     }
 
     @media (max-width: 480px) {
-      header { padding: 10px; }
-      nav ul { gap: 10px; }
-      nav ul li a { font-size: 0.7rem; }
-      .logo img { width: 40px; }
-      .title h3 { font-size: 0.6rem; }
-      .btn-ctrl { padding: 8px 15px; font-size: 12px; }
-      .track img { width: 150px; height: 90px; }
-    }
+      .back-home-btn {
+        padding: 8px 15px;
+        font-size: 11px;
+        top: 10px;
+        left: 10px;
+      }
 
+      .back-home-btn span {
+        display: none;
+      }
+
+      .back-home-btn i {
+        margin: 0;
+      }
+    }
 
     /* --- 2. BOOK SECTION (ALBUM) --- */
     .album-section {
-      min-height: 90vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      position: relative; padding: 40px 0;
+      position: relative; padding: 80px 20px 40px 20px;
     }
 
-    .book-controls { margin-bottom: 20px; z-index: 10; display: flex; gap: 15px; }
-    
-    .btn-ctrl {
-      padding: 10px 20px; font-size: 14px; cursor: pointer;
-      background: var(--accent-color); color: #fff;
-      border: 1px solid var(--cover-color); border-radius: 25px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3); font-family: serif;
+    /* Gallery Title */
+    .gallery-title {
+      font-size: 48px;
+      font-weight: bold;
+      color: var(--gold-accent);
+      text-align: center;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      letter-spacing: 2px;
     }
-    .btn-ctrl:hover { background: var(--cover-color); transform: translateY(-2px); }
-    .btn-danger { background: #8b3a3a; }
+
+    @media (max-width: 768px) {
+      .gallery-title {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-title {
+        font-size: 28px;
+      }
+    }
 
     /* Scene 3D */
     .scene { width: 350px; height: 500px; perspective: 2500px; position: relative; transition: transform 0.5s; }
@@ -189,8 +205,8 @@
     .track img { width: 200px; height: 120px; object-fit: cover; border-radius: 5px; border: 2px solid var(--accent-color); filter: sepia(30%); transition: 0.3s; }
     .track img:hover { filter: sepia(0%); transform: scale(1.05); }
 
-    .move-left { animation: scrollLeft 20s linear infinite; }
-    .move-right { animation: scrollRight 20s linear infinite; }
+    .move-left { animation: scrollLeft 40s linear infinite; }
+    .move-right { animation: scrollRight 40s linear infinite; }
 
     @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
@@ -211,17 +227,16 @@
 </head>
 <body>
 
-  
+  <!-- BACK TO HOME BUTTON -->
+  <a href="index.html" class="back-home-btn">
+    <i class="fas fa-arrow-left"></i>
+    <span>Kembali ke Home</span>
+  </a>
 
   <section class="album-section">
-    <div class="book-controls">
-      <button class="btn-ctrl" onclick="addPage()">+ Halaman</button>
-      <button class="btn-ctrl btn-danger" onclick="removePage()">- Hapus</button>
-    </div>
-
+    <h1 class="gallery-title">Our Gallery</h1>
     <div class="scene">
       <div class="book" id="book">
-        
         <div class="page cover">
           <div class="front">
             <div class="cover-border">
@@ -231,30 +246,97 @@
             </div>
           </div>
           <div class="back">
-            <h2>Sambutan</h2>
-            <p>"Merekam jejak langkah dalam kenangan."</p>
+              <div class="photo-frame" style="transform: rotate(1deg);">
+                <img src="sang back.png">
+              </div>
+              <p style="margin-top: 10px; font-size: 13px;">Sanggar Seni Budaya</p>
           </div>
         </div>
 
+        <!-- Page 1: Sanggar -->
         <div class="page">
           <div class="front">
-            <div class="photo-frame">
-              <img src="https://picsum.photos/300/400?random=1">
+            <h2 style="margin-top: 20px;">SANGGAR</h2>
+            <h3>Members</h3>
+            <div style="text-align: left; padding: 0 20px; font-size: 14px; line-height: 1.8;">
+              <p>• Nama Member 1</p>
+              <p>• Nama Member 2</p>
+              <p>• Nama Member 3</p>
+              <p>• Nama Member 4</p>
+              <p>• Nama Member 5</p>
             </div>
-            <h3>Kegiatan Awal</h3>
-            <p>Dokumentasi acara pembukaan.</p>
           </div>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </button>
+          <div class="back">
+            <div class="photo-frame" style="transform: rotate(1deg);">
+              <img src="sang back.png">
+            </div>
+            <p style="margin-top: 10px; font-size: 13px;">Zenith</p>
+          </div>
+        </div>
+
+        <!-- Page 2: Zenith -->
+        <div class="page">
+          <div class="front">
+            <h2 style="margin-top: 20px;">ZENITH</h2>
+            <h3>Members</h3>
+            <div style="text-align: left; padding: 0 20px; font-size: 14px; line-height: 1.8;">
+              <p>• Nama Member 1</p>
+              <p>• Nama Member 2</p>
+              <p>• Nama Member 3</p>
+              <p>• Nama Member 4</p>
+              <p>• Nama Member 5</p>
+            </div>
+          </div>
+          <div class="back">
+            <div class="photo-frame" style="transform: rotate(-1deg);">
+              <img src="jenitcard.png">
+            </div>
+            <p style="margin-top: 10px; font-size: 13px;">Indonesian Developer</p>
+          </div>
+        </div>
+
+        <!-- Page 3: Indevs -->
+        <div class="page">
+          <div class="front">
+            <h2 style="margin-top: 20px;">INDEVS</h2>
+            <h3>Members</h3>
+            <div style="text-align: left; padding: 0 20px; font-size: 14px; line-height: 1.8;">
+              <p>• ZULFAN ABIDIN</p>
+              <p>• AHMAD ABROR PAUT RAGAJATI</p>
+              <p>• NURLAILAH</p>
+              <p>• ADINDA GAMA SHOLEHA</p>
+              <p>• DARA OVIA</p>
+              <p>• NUNUNG WARDANI</p>
+              <p>• FAUZIAH</p>
+              <p>• M. ARIF ARDELIAN</p>
+            </div>
+          </div>
           <div class="back">
             <div class="photo-frame" style="transform: rotate(2deg);">
-              <img src="https://picsum.photos/300/400?random=2">
+              <img src="indevs card.png">
             </div>
-            <h3>Keseruan</h3>
-            <p>Momen kebersamaan.</p>
+            <p style="margin-top: 10px; font-size: 13px;">Indevs IT Club</p>
+          </div>
+        </div>
+
+        <!-- Page 4: Angklung -->
+        <div class="page">
+          <div class="front">
+            <h2 style="margin-top: 20px;">ANGKLUNG</h2>
+            <h3>Members</h3>
+            <div style="text-align: left; padding: 0 20px; font-size: 14px; line-height: 1.8;">
+              <p>• Nama Member 1</p>
+              <p>• Nama Member 2</p>
+              <p>• Nama Member 3</p>
+              <p>• Nama Member 4</p>
+              <p>• Nama Member 5</p>
+            </div>
+          </div>
+          <div class="back">
+            <div class="photo-frame" style="transform: rotate(-2deg);">
+              <img src="ang card.png">
+            </div>
+            <p style="margin-top: 10px; font-size: 13px;">Angklung Music Club</p>
           </div>
         </div>
 
@@ -280,50 +362,50 @@
   <section class="marquee-container">
     <div class="marquee-row">
       <div class="track move-right">
-        <img src="https://picsum.photos/200/120?random=10">
-        <img src="https://picsum.photos/200/120?random=11">
-        <img src="https://picsum.photos/200/120?random=12">
-        <img src="https://picsum.photos/200/120?random=13">
-        <img src="https://picsum.photos/200/120?random=14">
-        <img src="https://picsum.photos/200/120?random=15">
-        <img src="https://picsum.photos/200/120?random=10">
-        <img src="https://picsum.photos/200/120?random=11">
-        <img src="https://picsum.photos/200/120?random=12">
-        <img src="https://picsum.photos/200/120?random=13">
-        <img src="https://picsum.photos/200/120?random=14">
-        <img src="https://picsum.photos/200/120?random=15">
+        <img src="foto1.JPG">
+        <img src="foto2.jpeg">
+        <img src="foto3.jpeg">
+        <img src="foto4.jpeg">
+        <img src="foto5.jpg">
+        <img src="culture night.jpg">
+        <img src="foto1.JPG">
+        <img src="foto2.jpeg">
+        <img src="foto3.jpeg">
+        <img src="foto4.jpeg">
+        <img src="foto5.jpg">
+        <img src="culture night.jpg">
       </div>
     </div>
     <div class="marquee-row">
       <div class="track move-left">
-        <img src="https://picsum.photos/200/120?random=20">
-        <img src="https://picsum.photos/200/120?random=21">
-        <img src="https://picsum.photos/200/120?random=22">
-        <img src="https://picsum.photos/200/120?random=23">
-        <img src="https://picsum.photos/200/120?random=24">
-        <img src="https://picsum.photos/200/120?random=25">
-        <img src="https://picsum.photos/200/120?random=20">
-        <img src="https://picsum.photos/200/120?random=21">
-        <img src="https://picsum.photos/200/120?random=22">
-        <img src="https://picsum.photos/200/120?random=23">
-        <img src="https://picsum.photos/200/120?random=24">
-        <img src="https://picsum.photos/200/120?random=25">
+        <img src="IMG_8676.JPG">
+        <img src="IMG_8820.JPG">
+        <img src="IMG_8837.JPG">
+        <img src="IMG_1852.jpg">
+        <img src="peskom.JPG">
+        <img src="Hari Belia Negara.png">
+        <img src="IMG_8676.JPG">
+        <img src="IMG_8820.JPG">
+        <img src="IMG_8837.JPG">
+        <img src="IMG_1852.jpg">
+        <img src="peskom.JPG">
+        <img src="Hari Belia Negara.png">
       </div>
     </div>
     <div class="marquee-row">
       <div class="track move-right">
-        <img src="https://picsum.photos/200/120?random=30">
-        <img src="https://picsum.photos/200/120?random=31">
-        <img src="https://picsum.photos/200/120?random=32">
-        <img src="https://picsum.photos/200/120?random=33">
-        <img src="https://picsum.photos/200/120?random=34">
-        <img src="https://picsum.photos/200/120?random=35">
-        <img src="https://picsum.photos/200/120?random=30">
-        <img src="https://picsum.photos/200/120?random=31">
-        <img src="https://picsum.photos/200/120?random=32">
-        <img src="https://picsum.photos/200/120?random=33">
-        <img src="https://picsum.photos/200/120?random=34">
-        <img src="https://picsum.photos/200/120?random=35">
+        <img src="convocation.jpeg">
+        <img src="convo.jpeg">
+        <img src="Alor Setar Beraya Sakan.jpg">
+        <img src="SILBUD 3.JPG">
+        <img src="SILBUD 4.JPG">
+        <img src="Echoes of Heritage.JPG">
+        <img src="convocation.jpeg">
+        <img src="convo.jpeg">
+        <img src="Alor Setar Beraya Sakan.jpg">
+        <img src="SILBUD 3.JPG">
+        <img src="SILBUD 4.JPG">
+        <img src="Echoes of Heritage.JPG">
       </div>
     </div>
   </section>
@@ -406,6 +488,7 @@
 
     initBook();
   </script>
+
   <script src="animations.js"></script>
 </body>
 </html>

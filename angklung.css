@@ -5,6 +5,19 @@
     font-family: Arial, sans-serif;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 74px;
+}
+
+/* Remove padding-top on mobile to eliminate space */
+@media screen and (max-width: 768px) {
+  body {
+    padding-top: 0;
+  }
+}
+
 header {
   position: fixed;
   background-color: #fff6d1;
@@ -23,42 +36,36 @@ header {
 
 /* HERO */
 .hero {
-    height: 630px;
+    position: relative;
+    height: 530px;
     background: url("angklung\ back.jpg") center/cover no-repeat;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     color: white;
-    text-shadow: 0 0 15px black;
-    margin-top: 0px;
+    font-size: 2rem;
+    font-weight: bold;
     border-bottom: #f8f1df 4px solid;
+    margin-top: 0;
 }
+
+.logo-kiri {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  width: 100px;
+  z-index: 99;
+}
+
 .hero-right h1 {
-    font-family: I;
-    font-size: 80px;  /* Atur besar di sini */
+    font-family: Arial;
+    font-size: 120px;
     line-height: 1.1;
     text-align: center;
     color: white;
     font-weight: 900;
     text-shadow: 4px 4px 10px rgba(0,0,0,0.8);
-
-}
-
-
-.hero h1 {
-    font-size: 100px;
-    letter-spacing: 2px;
-    text-align: center;
-    text-shadow: 10px 10px 20px rgba(0,0,0,0.8);
-    justify-content: center;
-    width: 20px;
-    padding-top: 300px;
-}
-
-.hero h2 {
-    font-size: 65px;
-    font-weight: bold;
+    margin-top: 200px;
 }
 
 /* ABOUT */
@@ -205,4 +212,98 @@ p {
   color: #fff;
 }
 
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 450px;
+  }
 
+  .hero-right h1 {
+    font-size: 50px;
+    padding: 0 20px;
+  }
+
+  section {
+    padding: 30px 20px;
+  }
+
+  .about h1, .history h1, .content h1, .content1 h1 {
+    font-size: 24px;
+  }
+
+  .about p, .history p, .content p, .content1 p {
+    font-size: 14px;
+  }
+
+  .content, .content1 {
+    padding: 30px 20px;
+  }
+
+  .gallery1 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .contact input, .contact textarea {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero {
+    height: 350px;
+  }
+
+  .hero-right h1 {
+    font-size: 35px;
+    padding: 0 15px;
+  }
+
+  section {
+    padding: 20px 15px;
+  }
+
+  .about h1, .history h1, .content h1, .content1 h1 {
+    font-size: 20px;
+  }
+
+  .content, .content1 {
+    padding: 20px 15px;
+  }
+
+  .gallery1 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .hero {
+    height: 450px;
+  }
+
+  .logo-kiri {
+    width: 60px;
+    top: 90px;
+    left: 10px;
+  }
+
+  .hero-right h1 {
+    font-size: 60px;
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero {
+    height: 350px;
+  }
+
+  .logo-kiri {
+    width: 50px;
+    top: 80px;
+  }
+
+  .hero-right h1 {
+    font-size: 40px;
+  }
+}
